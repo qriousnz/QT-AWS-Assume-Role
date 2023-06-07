@@ -1,0 +1,13 @@
+name: test
+on:
+  push:
+jobs:
+  test:
+    runs-on: qrious-ci-ubuntu
+    steps:
+      - uses: actions/checkout@v3
+      - uses: qriousnz/QT-AWS-Assume-Role@main
+        with:
+          role-arn: ${{ secrets.AWS_ROLE_ARN }}
+          role-session-name: GitHub-Action
+          duration-seconds: 900
